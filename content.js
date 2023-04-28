@@ -217,38 +217,6 @@ window.addEventListener('load', () => {
          }
       });
 
-      // keyboard event listeners
-      window.addEventListener('keydown', (event) => {
-         if (event.key === 'Shift') {
-            // 'SHIFT' key pressed
-            shiftKeyDown = true;
-         }
-      });
-
-      window.addEventListener('keyup', (event) => {
-         if (event.key === 'Shift') {
-            // 'SHIFT' key released
-            shiftKeyDown = false;
-         } else if (shiftKeyDown && event.key === 'Enter') {
-            // 'SHIFT + HOME' key combination registered. Toggle enabled on/off
-            if (initializeSuccessful) {
-               if (options.enabled) {
-                  // disable
-                  setEnabled(false);
-                  unhideLobbies();
-                  debug('Showing all lobbies.');
-               } else {
-                  // enable
-                  hideLobbies();
-                  setEnabled(true);
-                  debug(hiddenLobbies.length + ' lobbies were hidden.');
-               }
-            } else {
-               debug('Application not yet initialized successfully due to missing lobbies.');
-            }
-         }
-      });
-
       // auto-refresh on a time interval in case lobby status changes
       window.setInterval(() => {
          if (initializeSuccessful) {
