@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
        options[key] = event.target.checked;
        chrome.storage.sync.set({options}, () => {
           // Update status to let user know changes were saved.
-          const status = document.getElementById('status');
+          const status = document.getElementById('principale');
           status.textContent = 'Changes saved.';
           setTimeout(() => {
              status.textContent = '';
