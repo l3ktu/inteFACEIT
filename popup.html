@@ -4,14 +4,17 @@
     <title>inteFACEIT</title>
     <style>
       body {
+        background-color: #171717;
         padding: 0px;
       }
 
       h1 {
-        font-family: 'Gabriola', sans-serif;
+        font-family: 'Franklin Gothic Medium', sans-serif;
         margin-top: -10px;
-        font-size: 30px;
-        margin-bottom: 0px;
+        text-align: justify;
+        color: white;
+        font-size: 25px;
+        margin-bottom: 10px;
       }
 
       /* Styles for the sidebar menu */
@@ -22,27 +25,28 @@
         left: 0;
         height: 100%;
         width: 200px;
-        background-color: #f5f5f5;
         overflow-x: hidden;
-        padding-top: 10px;
+        border-top: 1px solid #262626;
+        border-right: 1px solid #262626;
+        border-bottom: 1px solid #262626;
       }
 
       .menu a {
         display: block;
-        padding: 16px;
+        padding: 13px;
         text-decoration: none;
         font-size: 17px;
-        color: #333;
+        color: #ffffff;
         transition: 0.3s;
       }
 
       /* Add a class for the selected menu item */
       .menu a.selected {
-        color: red;
+        background-color: #00000086;
       }
 
       .menu a:hover {
-        background-color: #ddd;
+        background-color: #00000086;
       }
 
       /* Styles for the main content */
@@ -53,17 +57,38 @@
     </style>
   </head>
   <body>
-    <h1>inteFACEIT</h1>
+    <h1>
+      <img src="img/no_back_logo.png" alt="inteFACEIT logo" width="40" height="40"> inteFACEIT
+    </h1>
     <!-- Sidebar menu -->
     <div class="menu">
-      <a href="#" class="selected">Principale</a>
-      <a href="#">Secundare</a>
-      <a href="#">Vizuale</a>
+      <a href="#" id="principale-link" class="selected">Principale</a>
+      <a href="#" id="secundare-link">Secundare</a>
+      <a href="#" id="vizuale-link">Vizuale</a>
     </div>
 
     <!-- Main content -->
     <div class="main-content">
-      <p>This is the main content area.</p>
+      <!-- Content for the Principale category -->
+      <div id="principale" class="category-content">
+        <label>
+          <input type="checkbox" id="enabled">
+          Enable extension
+       </label>
+
+       
+        <p>This is the main content area for the Principale category.</p>
+      </div>
+      
+      <!-- Content for the Secundare category -->
+      <div id="secundare" class="category-content" style="display:none">
+        <p>This is the main content area for the Secundare category.</p>
+      </div>
+    
+      <!-- Content for the Vizuale category -->
+      <div id="vizuale" class="category-content" style="display:none">
+        <p>This is the main content area for the Vizuale category.</p>
+      </div>
     </div>
     <script src="popup.js"></script>
   </body>
