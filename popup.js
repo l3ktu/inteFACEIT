@@ -10,18 +10,18 @@ const options = {
 document.addEventListener('DOMContentLoaded', function() {
   chrome.storage.sync.get(options, (items) => {
     for (let key in items) {
-       document.getElementById(key).checked = items.enabled;
+      document.getElementById(key).value = items[key] ? 1 : 0;
     }
- });
+  });
  // add option change event listeners to each checkbox that immediately persist option changes
  for (const key in options) {
-    document.getElementById(key).addEventListener('change', (event) => {
-       options[key] = event.target.checked;
-       chrome.storage.sync.set({options}, () => {
-          // Update status to let user know changes were saved.
-          const status = document.getElementById('principale');
-       });
+  document.getElementById(key).addEventListener('input', (event) => {
+    options[key] = event.target.value == 1;
+    chrome.storage.sync.set({options}, () => {
+      // Update status to let user know changes were saved.
+      const status = document.getElementById('principale');
     });
+  });  
  }
  // if enabled state is changes in the application, automatically set/remove checkmark for 'enabled'.
  chrome.storage.onChanged.addListener((changes, area) => {
