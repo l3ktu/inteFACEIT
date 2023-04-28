@@ -1,4 +1,3 @@
-// Define options object with default values
 const options = {
   enabled: true,
   hideNotJoinable: true,
@@ -8,35 +7,30 @@ const options = {
   outputDebuggingMessages: false,
 };
 
-// Wait for the DOM to load before executing the code
 document.addEventListener('DOMContentLoaded', function() {
-  // Load options from Chrome storage and set the checkbox state accordingly
   chrome.storage.sync.get(options, (items) => {
     for (let key in items) {
-       document.getElementById(key).checked = items[key];
+      document.getElementById(key).value = items[key] ? 1 : 0;
     }
   });
-
-  // Add option change event listeners to each checkbox that immediately persist option changes
-  for (const key in options) {
-    document.getElementById(key).addEventListener('change', (event) => {
-      options[key] = event.target.checked;
-      chrome.storage.sync.set({options}, () => {
-        // Update status to let user know changes were saved.
-        const status = document.getElementById('principale');
-      });
+ // add option change event listeners to each checkbox that immediately persist option changes
+ for (const key in options) {
+  document.getElementById(key).addEventListener('input', (event) => {
+    options[key] = event.target.value == 1;
+    chrome.storage.sync.set({options}, () => {
+      // Update status to let user know changes were saved.
+      const status = document.getElementById('principale');
     });
-  }
-
-  // If enabled state is changed in the application, automatically set/remove checkmark for 'enabled'.
-  chrome.storage.onChanged.addListener((changes, area) => {
+  });  
+ }
+ // if enabled state is changes in the application, automatically set/remove checkmark for 'enabled'.
+ chrome.storage.onChanged.addListener((changes, area) => {
     if (area === 'sync' && changes.options?.newValue) {
-      changes = changes.options.newValue;
-      options.enabled = changes.enabled;
-      document.getElementById('enabled').checked = options.enabled;
+       changes = changes.options.newValue;
+       options.enabled = changes.enabled;
+       document.getElementById('enabled').checked = options.enabled;
     }
-  });
-
+ });
   // Add an event listener to the menu items to update the selected class and show the corresponding content
   const menuItems = document.querySelectorAll('.menu a');
   const categoryContents = document.querySelectorAll('.category-content');
