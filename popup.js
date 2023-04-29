@@ -20,7 +20,9 @@ function checkForUpdates() {
     .then(response => response.json())
     .then(data => {
       const version = data.version;
-      const updateUrl = "https://raw.githubusercontent.com/l3ktu/inteFACEIT/main/update.xml";
+      const updateUrl = "https://raw.githubusercontent.com/l3ktu/inteFACEIT/main/update.xml?t=" + Date.now();
+      // Add a cache-busting parameter to the update URL
+
       const xhr = new XMLHttpRequest();
       xhr.open('GET', updateUrl);
       xhr.onload = function() {
@@ -32,7 +34,7 @@ function checkForUpdates() {
             const latestVersion = xmlDoc.getElementsByTagName('update')[0].getAttribute('version');
             const changelogElement = xmlDoc.getElementsByTagName('changelog')[0];
             const changelog = changelogElement ? changelogElement.textContent : 'No changelog available.';
-               if (latestVersion !== version) {
+            if (latestVersion !== version) {
               const updateMessage = `Update ${latestVersion} is available. Click OK to update.\n\nChangelog:\n${changelog}`;
               const userResponse = confirm(updateMessage);
               if (userResponse) {
@@ -50,6 +52,7 @@ function checkForUpdates() {
     })
     .catch(error => console.log(error));
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
