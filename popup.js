@@ -6,6 +6,52 @@ const options = {
   hideQueuing: false,
 };
 
+const checkForUpdatesBtn = document.getElementById('check-for-updates');
+
+// Add an event listener to the check for updates button
+checkForUpdatesBtn.addEventListener('click', () => {
+  // Call your update function here to check for updates
+  checkForUpdates();
+});
+
+function checkForUpdates() {
+  const manifestUrl = chrome.extension.getURL('/manifest.json');
+  fetch(manifestUrl)
+    .then(response => response.json())
+    .then(data => {
+      const version = data.version;
+      const updateUrl = "https://raw.githubusercontent.com/l3ktu/inteFACEIT/main/update.xml";
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', updateUrl);
+      xhr.onload = function() {
+        if (xhr.readyState === xhr.DONE) {
+          if (xhr.status === 200) {
+            const updateXml = xhr.responseText;
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(updateXml, "text/xml");
+            const latestVersion = xmlDoc.getElementsByTagName('update')[0].getAttribute('version');
+            const changelogElement = xmlDoc.getElementsByTagName('changelog')[0];
+            const changelog = changelogElement ? changelogElement.textContent : 'No changelog available.';
+               if (latestVersion !== version) {
+              const updateMessage = `Update ${latestVersion} is available. Click OK to update.\n\nChangelog:\n${changelog}`;
+              const userResponse = confirm(updateMessage);
+              if (userResponse) {
+                chrome.runtime.reload();
+              }
+            } else {
+              alert('You are using the latest version of the extension.');
+            }
+          } else {
+            alert('Unable to check for updates. Please try again later.');
+          }
+        }
+      };
+      xhr.send(null);
+    })
+    .catch(error => console.log(error));
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const enabledCheckbox = document.getElementById('enabled');
   const subGroup = document.querySelector('.sub-group');
