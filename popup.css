@@ -1,0 +1,66 @@
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background-color: #171717;
+    padding: 0px;
+    width: 500px;
+    height: 600px;
+  }
+  
+
+  h1 {
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    margin-top: -10px;
+    text-align: justify;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  /* Styles for the sidebar menu */
+  .menu {
+    font-family: 'Tahoma', sans-serif;
+    position: fixed;
+    top: -1;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    overflow-x: hidden;
+    border-top: 1px solid #262626;
+    border-right: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+  }
+
+  .sub-group {
+    margin-left: 20px;
+    display: none;
+  }
+  
+  .menu a {
+    display: block;
+    padding: 13px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #ffffff;
+    transition: 0.3s;
+  }
+
+  /* Add a class for the selected menu item */
+  .menu a.selected {
+    background-color: #00000086;
+  }
+
+  .menu a:hover {
+    background-color: #00000086;
+  }
+
+  /* Styles for the main content */
+  .main-content {
+    color: blue;
+    margin-left: 200px;
+    padding: 20px;
+  }

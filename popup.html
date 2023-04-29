@@ -2,59 +2,7 @@
 <html>
   <head>
     <title>inteFACEIT</title>
-    <style>
-      body {
-        background-color: #171717;
-        padding: 0px;
-      }
-
-      h1 {
-        font-family: 'Franklin Gothic Medium', sans-serif;
-        margin-top: -10px;
-        text-align: justify;
-        color: white;
-        font-size: 25px;
-        margin-bottom: 10px;
-      }
-
-      /* Styles for the sidebar menu */
-      .menu {
-        font-family: 'Tahoma', sans-serif;
-        position: fixed;
-        top: -1;
-        left: 0;
-        height: 100%;
-        width: 200px;
-        overflow-x: hidden;
-        border-top: 1px solid #262626;
-        border-right: 1px solid #262626;
-        border-bottom: 1px solid #262626;
-      }
-
-      .menu a {
-        display: block;
-        padding: 13px;
-        text-decoration: none;
-        font-size: 17px;
-        color: #ffffff;
-        transition: 0.3s;
-      }
-
-      /* Add a class for the selected menu item */
-      .menu a.selected {
-        background-color: #00000086;
-      }
-
-      .menu a:hover {
-        background-color: #00000086;
-      }
-
-      /* Styles for the main content */
-      .main-content {
-        margin-left: 200px;
-        padding: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="/popup.css">
   </head>
   <body>
     <h1>
@@ -65,51 +13,13 @@
       <a href="#" id="principale-link" class="selected">Principale</a>
       <a href="#" id="secundare-link">Secundare</a>
       <a href="#" id="vizuale-link">Vizuale</a>
+      <a href="#" id="clan-link">Clan</a>
     </div>
 
     <!-- Main content -->
     <div class="main-content">
-      <!-- Content for the Principale category -->
-      <div id="principale" class="category-content">
-        <label>
-          <label>
-            <input type="range" id="enabled" min="0" max="1" step="1">
-            Enable extension
-         </label>
-         <br />
-      
-         <label>
-            <input type="checkbox" id="hideNotJoinable">
-            Hide "Not joinable" lobbies.
-         </label>
-         <br />
-      
-         <label>
-            <input type="checkbox" id="hideNotReady">
-            Hide "Not ready" lobbies.
-         </label>
-         <br />
-      
-         <label>
-            <input type="checkbox" id="hidePlaying">
-            Hide "Playing" lobbies.
-         </label>
-         <br />
-      
-         <label>
-            <input type="checkbox" id="hideQueuing">
-            Hide "Queuing" lobbies.
-         </label>
-         <br />
-      
-         <label>
-            <input type="checkbox" id="outputDebuggingMessages">
-            Enable debugging messages to console.
-         </label>
-         <br />
-          Enable extension
-       </label>
-        <p>This is the main content area for the Principale category.</p>
+      <div id="principale" class="category-content" style="display:none">
+        <p>This is the main content area for the Secundare category.</p>
       </div>
       
       <!-- Content for the Secundare category -->
@@ -121,6 +31,37 @@
       <div id="vizuale" class="category-content" style="display:none">
         <p>This is the main content area for the Vizuale category.</p>
       </div>
+      <div id="clan" class="category-content" style="display:none">
+        <label>
+          <input type="checkbox" id="enabled">
+          Ascunde lobbyurile de pe clanuri
+        </label>
+        <br />
+        <div class="sub-group" style="display:none">
+          <label>
+            <input type="checkbox" id="hideNotJoinable">
+            Ascunde lobbyurile in care nu poti intra.
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" id="hideNotReady">
+            Ascunde lobbyurile care nu sunt pregatite.
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" id="hidePlaying">
+            Ascunde lobbyurile care sunt in meci.
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" id="hideQueuing">
+            Ascunde lobbyurile care cauta meci.
+          </label>
+          <br />
+        </div>
+        <p>This is the main content area for the Principale category.</p>
+      </div>
+      
     </div>
     <script src="popup.js"></script>
   </body>
