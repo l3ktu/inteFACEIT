@@ -16,7 +16,7 @@ checkForUpdatesBtn.addEventListener('click', () => {
 });
 
 function checkForUpdates() {
-  const manifestUrl = chrome.extension.getURL('/manifest.json');
+  const manifestUrl = "./manifest.json";
   fetch(manifestUrl)
     .then(response => response.json())
     .then(data => {
@@ -39,7 +39,8 @@ function checkForUpdates() {
               const updateMessage = `Ai versiunea ${version}, a aparut versiunea ${latestVersion} is available. Click OK to update.\n\nChangelog:\n${changelog}`;
               const userResponse = confirm(updateMessage);
               if (userResponse) {
-                chrome.runtime.reload();
+                // Reload the extension by reloading the current tab
+                chrome.tabs.reload();
               }
             } else {
               alert('You are using the latest version of the extension.');
@@ -53,8 +54,6 @@ function checkForUpdates() {
     })
     .catch(error => console.log(error));
 }
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
   const enabledCheckbox = document.getElementById('enabled');
