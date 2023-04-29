@@ -68,15 +68,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Add option change event listeners to each checkbox that immediately persist option changes
-  for (const key in options) {
-    document.getElementById(key).addEventListener('change', (event) => {
-      options[key] = event.target.checked;
-      chrome.storage.sync.set({options}, () => {
-        // Update status to let user know changes were saved.
+// Add option change event listeners to each checkbox that immediately persist option changes
+for (const key in options) {
+  document.getElementById(key).addEventListener('change', (event) => {
+    options[key] = event.target.checked;
+    fetch('/saveOptions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ options })
+    })
+    .then(response => {
+      if (response.ok) {
         const status = document.getElementById('clan');
-      });
-    });
-  }
+      } else {
+        throw new Error('Unable to save options. Please try again later.');
+      }
+    })
+    .catch(error => console.log(error));
+  });
+}
 
   // If enabled state is changed in the application, automatically set/remove checkmark for 'enabled'.
   chrome.storage.onChanged.addListener((changes, area) => {
