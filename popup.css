@@ -80,8 +80,8 @@ body {
   scrollbar-width: none;
   background-color: #171717;
   padding: 0px;
-  width: 500px;
-  height: 600px;
+  width: 640px;
+  height: 500px;
 }
 
 
@@ -216,5 +216,5 @@ p {
   border-top: 1px solid #262626;
 box-shadow: inset 0px 5px 3px -3px rgba(0, 0, 0, 0.75);
   margin-left: 192px;
-  padding: 20px;
+  padding: 10px;
 }
