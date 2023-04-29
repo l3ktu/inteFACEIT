@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>inteFACEIT</title>
     <link rel="stylesheet" href="/popup.css">
+    <title>inteFACEIT</title>
   </head>
   <body>
     <h1>
@@ -14,6 +14,7 @@
       <a href="#" id="secundare-link">Secundare</a>
       <a href="#" id="vizuale-link">Vizuale</a>
       <a href="#" id="clan-link">Clan</a>
+      <a href="#" id="despre-link">Despre</a>
     </div>
 
     <!-- Main content -->
@@ -33,36 +34,53 @@
       </div>
       <div id="clan" class="category-content" style="display:none">
         <label>
-          <input type="checkbox" id="enabled">
+          <div class="md_switch">
+            <input checked type="checkbox" id="enabled">
+            <span class="md_switch__toggle"></span>
+          </div>
           Ascunde lobbyurile de pe clanuri
         </label>
         <br />
         <div class="sub-group" style="display:none">
           <label>
-            <input type="checkbox" id="hideNotJoinable">
-            Ascunde lobbyurileeeeeeee in care nu poti intra.
+            <div class="md_switch">
+              <input checked type="checkbox" id="hideNotJoinable">
+              <span class="md_switch__toggle"></span>
+            </div>
+            Ascunde lobbyurile in care nu poti intra.
           </label>
           <br />
           <label>
-            <input type="checkbox" id="hideNotReady">
+            <div class="md_switch">
+              <input checked type="checkbox" id="hideNotReady">
+              <span class="md_switch__toggle"></span>
+            </div>
             Ascunde lobbyurile care nu sunt pregatite.
           </label>
           <br />
           <label>
-            <input type="checkbox" id="hidePlaying">
+            <div class="md_switch">
+              <input checked type="checkbox" id="hidePlaying">
+              <span class="md_switch__toggle"></span>
+            </div>
             Ascunde lobbyurile care sunt in meci.
           </label>
           <br />
           <label>
-            <input type="checkbox" id="hideQueuing">
+            <div class="md_switch">
+              <input checked type="checkbox" id="hideQueuing">
+              <span class="md_switch__toggle"></span>
+            </div>
             Ascunde lobbyurile care cauta meci.
           </label>
           <br />
         </div>
         <p>This is the main content area for the Principale category.</p>
+      </div>      
+      <div id="despre" class="category-content" style="display:none">
+        <ListSubheader>Update</ListSubheader>
+        <button id="check-for-updates">Check for Updates</button>
       </div>
-      
-      <button id="check-for-updates">Check for Updates</button>
 
     </div>
     <script src="popup.js"></script>
