@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
-  <update version="1.0.2">
+  <update version="1.0.5">
     <url>https://github.com/l3ktu/inteFACEIT/archive/refs/heads/main.zip</url>
     <size>12345</size>
     <hash>ABC123</hash>
