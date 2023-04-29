@@ -6,6 +6,7 @@ const options = {
   hideQueuing: false,
 };
 
+
 const checkForUpdatesBtn = document.getElementById('check-for-updates');
 
 // Add an event listener to the check for updates button
