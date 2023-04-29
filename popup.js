@@ -35,7 +35,7 @@ function checkForUpdates() {
             const changelogElement = xmlDoc.getElementsByTagName('changelog')[0];
             const changelog = changelogElement ? changelogElement.textContent : 'No changelog available.';
             if (latestVersion !== version) {
-              const updateMessage = `Update ${latestVersion} is available. Click OK to update.\n\nChangelog:\n${changelog}`;
+              const updateMessage = `Ai versiunea ${version}, a aparut versiunea ${latestVersion} is available. Click OK to update.\n\nChangelog:\n${changelog}`;
               const userResponse = confirm(updateMessage);
               if (userResponse) {
                 chrome.runtime.reload();
