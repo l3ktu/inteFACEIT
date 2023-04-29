@@ -51,16 +51,17 @@ body {
 
   /* Add a class for the selected menu item */
   .menu a.selected {
-    background-color: #00000086;
+    background-color: #ffffff2a;
+    
   }
 
   .menu a:hover {
-    background-color: #00000086;
+    background-color: #ffffff2a;
   }
 
   /* Styles for the main content */
   .main-content {
-    color: blue;
+    color: #999b9d;
     margin-left: 200px;
     padding: 20px;
   }
