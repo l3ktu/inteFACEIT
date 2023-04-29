@@ -8,6 +8,7 @@ const options = {
 
 
 const checkForUpdatesBtn = document.getElementById('check-for-updates');
+const versionElement = document.getElementById('version');
 
 // Add an event listener to the check for updates button
 checkForUpdatesBtn.addEventListener('click', () => {
@@ -45,6 +46,7 @@ function checkForUpdates() {
             } else {
               alert('You are using the latest version of the extension.');
             }
+            versionElement.textContent = `Current version: ${version}`;
           } else {
             alert('Unable to check for updates. Please try again later.');
           }
