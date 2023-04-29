@@ -2,7 +2,7 @@
    "manifest_version": 2,
    "name": "inteFACEIT",
    "version": "1.0.2",
-   "update_url": "http://example.com/my-extension/update.xml",
+   "update_url": "https://raw.githubusercontent.com/l3ktu/inteFACEIT/main/update.xml",
    "description": "Folosind aceasta extensie iti vei usura viata.",
    "icons": {
       "128": "/img/no_back_logo.png"
